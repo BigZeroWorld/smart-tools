@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<title>JSON diff</title>
+<script type="text/javascript" src="../../js/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="../../js/bootstrap.js"></script>
+<script type="text/javascript" src="../../css/bootstrap-waitingfor.min.js"></script>
+<link rel="stylesheet" href="../../css/bootstrap.min.css" />
+<link rel="stylesheet" href="/css/bootstrap-theme.min.css" />
+
+<script src="/js/codemirror.js"></script>
+<script src="/js-lib/common.js"></script>
+
+<script defer="defer" src="./jsondiff/main.js">
+</script>
+<link defer="defer" rel="stylesheet" href="./jsondiff/styleAll.css" />
+
+<head></head>
+
+<body style="padding-left:0;padding-right:0;padding-top:0;padding-bottom:0;margin-top:0;margin-left:auto;margin-right:auto;margin-bottom:0">
+    <div>
+
+        <script defer="defer" src="./jsondiff/javascript.js">
+        </script>
+        <style>
+            .json_diff_color_1 {
+                background-color: #ff6
+            }
+            
+            .json_diff_color_2 {
+                background-color: #ff6
+            }
+            
+            .json_diff_color_3 {
+                background-color: #ffb3b3
+            }
+            
+            .text-compare-select-top {
+                border-left: 2px solid gray;
+                border-right: 2px solid gray;
+                border-top: 2px solid gray
+            }
+            
+            .text-compare-select-bottom {
+                border-left: 2px solid gray;
+                border-right: 2px solid gray;
+                border-bottom: 2px solid gray
+            }
+            
+            .text-compare-select-middle {
+                border-left: 2px solid gray;
+                border-right: 2px solid gray
+            }
+            /*.json-diff-plus-minus {*/
+            /*    float: right: margin-right: 25%;*/
+            /*    max-width: 30px;*/
+            /*    cursor: pointer*/
+            /*}*/
+            /*.CodeMirror {*/
+            /*    height: auto;*/
+            /*    min-height: 200px*/
+            /*}*/
+        </style>
+        <div class="modal fade in" id="modelInfo" role="dialog">
+            <div class="modal-dialog modal-confirm">
+                <!-- Modal content-->
+                <div class="modal-content" style="font-size: 14px">
+                    <div class="modal-header">
+                        <h4 class="modal-title" style="color: #89e7b3;font-size: 30px"><span class="glyphicon glyphicon-info-sign"></span></h4>
+                    </div>
+                    <div class="modal-body" style="text-align: center">
+                        <p id="info"></p>
+                    </div>
+                    <div class="modal-footer" style="text-align: center">
+                        <button class="btn" data-dismiss="modal" style="color: white;background-color:#1890ff;width: 30%;" type="button">关 闭</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row-container">
+            <div class="row-container-small">
+                <!--            <p>This tool allows you to <strong>compare JSON documents</strong> and visualize the semantic differences.<p>You can <a href="#userGuide">see the user guide</a> to help you to use this <strong>JSON compare tool</strong>. -->
+                <div>
+                    <input class="hidden" id="file-input-text" type="file" />
+                    <input class="hidden" id="file-input-text-2" type="file" />
+                </div>
+                <div class="column-double span" id="dropZone">
+                    <div class="container-center">
+                        <span class="editor-title">Except JSON</span>
+                    </div>
+                    <div class="row-container editor-container" style="clear:both">
+                        <textarea class="editor" id="editor-container-text"></textarea>
+                    </div>
+                    <div class="editor-error" id="editor-error1" style="display:none">
+                    </div>
+                    <div class="editor-valid" id="editor-valid1" style="display:none">
+                    </div>
+                </div>
+                <div class="column-double span" id="dropZone2">
+                    <div class="container-center">
+                        <span class="editor-title">ActualJSON</span>
+                    </div>
+                    <div class="row-container editor-container" style="clear:both">
+                        <textarea class="editor" id="editor-container-text-2"></textarea>
+                    </div>
+                    <div class="editor-error" id="editor-error2" style="display:none">
+                    </div>
+                    <div class="editor-valid" id="editor-valid2" style="display:none">
+                    </div>
+                </div>
+                <div id="result">
+                    <div style="text-align: center;margin-top: 20px">
+                        <!--                    <span id="nb-diff" class="editor-valid"></span>-->
+                        <span class="editor-title" id="spanDiff">Compare Result:</span>
+                        <button class="btn btn-xs" onclick="next()" style="margin-left: 20px;background-color:#1890ff;color: white" type="button"><span class="glyphicon glyphicon-circle-arrow-down"> Next</span></button>
+                        <button class="btn btn-xs" onclick="previous()" style="margin-left: 20px;background-color:#1890ff;color: white" type="button"><span class="glyphicon glyphicon-circle-arrow-up"> Previous</span></button>
+                    </div>
+                </div>
+
+                <div style="clear:both">
+                </div>
+                <div class="column-double span">
+                    <br />
+                    <div class="row-container editor-container">
+                        <textarea class="editor" id="editor-container-result1"></textarea>
+                    </div>
+                </div>
+                <div class="column-double span">
+                    <br />
+                    <div class="row-container editor-container">
+                        <textarea class="editor" id="editor-container-result2"></textarea>
+                    </div>
+                </div>
+                <div style="clear:both">
+                </div><br />
+            </div><br />
+        </div>
+    </div>
+    <script async="" src="./jsondiff/json-diff.js">
+    </script>
+
+</body>
+
+</html>
